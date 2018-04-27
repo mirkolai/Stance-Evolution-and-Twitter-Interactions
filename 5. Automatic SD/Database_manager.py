@@ -31,9 +31,9 @@ class Database_manager(object):
 
         tweets=[]
         if phase is None:
-            self.cur.execute(" SELECT  `id_tweet`,  `text_tweet`, `text_retweet`, `text_reply`, `text_reply_to`, `stance`, `phase`, `user_id` FROM `corpus_stance` where stance !='disagreement'")
+            self.cur.execute(" SELECT  `id_tweet`,  `text_tweet`, `text_retweet`, `text_reply`, `text_reply_to`, `stance`, `phase`, `user_id` FROM `corpus_stance` where stance is None")
         else:
-            self.cur.execute(" SELECT  `id_tweet`,  `text_tweet`, `text_retweet`, `text_reply`, `text_reply_to`, `stance`, `phase`, `user_id` FROM `corpus_stance` where stance !='disagreement' and phase=%s",phase)
+            self.cur.execute(" SELECT  `id_tweet`,  `text_tweet`, `text_retweet`, `text_reply`, `text_reply_to`, `stance`, `phase`, `user_id` FROM `corpus_stance` where stance is None and phase=%s",phase)
         i=0
         for row in self.cur.fetchall():
                 i+=1
